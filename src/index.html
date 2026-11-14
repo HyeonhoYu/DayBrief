@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; script-src 'self'" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>DayBrief</title>
+  <link rel="icon" type="image/png" href="img/favicon.png" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="drag-strip"></div>
+
+  <div id="popupBar" class="popup-bar" hidden>
+    <img class="popup-cat" src="img/victory.webp" alt="" />
+    <div class="popup-text">
+      <strong id="popupGreeting">Good morning.</strong>
+      <span id="popupSummary"></span>
+    </div>
+    <button id="startDayBtn" class="btn btn-sun">Start my day</button>
+  </div>
+
+  <div class="shell">
+    <nav class="side" aria-label="Main">
+      <div class="brand">
+        <img class="brand-mark" src="img/face.webp" alt="" />
+        <span>DayBrief</span>
+      </div>
+      <button class="nav-btn active" data-view="today">Today</button>
+      <button class="nav-btn" data-view="tasks">Tasks <span class="count" id="taskCount"></span></button>
+      <button class="nav-btn" data-view="week">Next 7 days</button>
+      <button class="nav-btn" data-view="occasions">Birthdays &amp; dates</button>
+      <div class="side-spacer"></div>
+      <button class="nav-btn" data-view="settings">Settings</button>
+      <div class="sync" id="syncStatus"></div>
+    </nav>
+
+    <main class="main">
+      <!-- TODAY -->
+      <section class="view" id="view-today">
+        <header class="day-head">
+          <div>
+            <p class="eyebrow" id="todayEyebrow"></p>
+            <h1 id="todayTitle"></h1>
+          </div>
+          <div class="chips" id="todayChips"></div>
+        </header>
+
+        <div class="occasion-banner" id="occasionBanner" hidden></div>
+
+        <div class="grid-today">
+          <article class="card">
+            <div class="card-head">
+              <h2>Schedule</h2>
+              <button class="btn btn-ghost btn-sm" id="addMeetingBtn">+ Meeting</button>
+            </div>
+            <form class="inline-form" id="meetingForm" hidden>
+              <input name="title" placeholder="Meeting title" required />
+              <div class="row">
+                <input name="date" type="date" required />
+                <input name="time" type="time" />
+                <input name="endTime" type="time" />
+              </div>
+              <input name="location" placeholder="Room or Zoom/Teams link (optional)" />
+              <div class="row end">
+                <button type="button" class="btn btn-ghost btn-sm" data-cancel>Cancel</button>
+                <button class="btn btn-sm">Add</button>
+              </div>
+            </form>
+            <ol class="timeline" id="todaySchedule"></ol>
+            <h3 class="sub">Tomorrow</h3>
+            <ol class="timeline compact" id="tomorrowSchedule"></ol>
+          </article>
+
+          <div class="stack">
+            <article class="card">
+              <div class="card-head"><h2>To do</h2></div>
+              <form class="quick-add" id="quickTask">
+                <input name="title" placeholder="Add a task and press Enter" autocomplete="off" />
+                <input name="due" type="date" title="Due date" />
+                <select name="priority" title="Priority">
+                  <option value="normal">Normal</option>
+                  <option value="high">High</option>
+                  <option value="low">Low</option>
+                </select>
+              </form>
+              <ul class="tasks" id="todayTasks"></ul>
+            </article>
+
+            <article class="card">
+              <div class="card-head">
+                <h2>Coming up</h2>
+                <button class="btn btn-ghost btn-sm" data-goto="occasions">Manage</button>
+              </div>
+              <ul class="occ-list" id="todayOccasions"></ul>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- TASKS -->
+      <section class="view" id="view-tasks" hidden>
+        <header class="day-head"><div><p class="eyebrow">Everything on your plate</p><h1>Tasks</h1></div><img class="head-cat" src="img/jump.webp" alt="" /></header>
+        <article class="card">
+          <form class="quick-add" id="quickTask2">
+            <input name="title" placeholder="Add a task and press Enter" autocomplete="off" />
+            <input name="due" type="date" title="Due date" />
+            <select name="priority" title="Priority">
+              <option value="normal">Normal</option>
+              <option value="high">High</option>
+              <option value="low">Low</option>
+            </select>
+          </form>
+          <div class="filters" role="tablist">
+            <button class="filter active" data-filter="open">Open</button>
+            <button class="filter" data-filter="done">Done</button>
+            <button class="filter" data-filter="all">All</button>
+          </div>
+          <div id="taskGroups"></div>
+        </article>
+      </section>
+
+      <!-- WEEK -->
+      <section class="view" id="view-week" hidden>
+        <header class="day-head"><div><p class="eyebrow">Meetings and due dates</p><h1>Next 7 days</h1></div><img class="head-cat" src="img/fly.webp" alt="" /></header>
+        <div class="week" id="weekGrid"></div>
+      </section>
+
+      <!-- OCCASIONS -->
+      <section class="view" id="view-occasions" hidden>
+        <header class="day-head"><div><p class="eyebrow">Never miss one again</p><h1>Birthdays &amp; dates</h1></div><img class="head-cat" src="img/sit.webp" alt="" /></header>
+        <div class="grid-occ">
+          <article class="card">
+            <h2>Add a date</h2>
+            <form class="stack-form" id="occForm">
+              <label>Who or what<input name="name" placeholder="e.g. Mom, Wedding anniversary" required /></label>
+              <label>Type
+                <select name="type">
+                  <option value="birthday">Birthday</option>
+                  <option value="anniversary">Anniversary</option>
+                  <option value="other">Other yearly date</option>
+                </select>
+              </label>
+              <div class="row">
+                <label>Month
+                  <select name="month" id="occMonth"></select>
+                </label>
+                <label>Day<input name="day" type="number" min="1" max="31" required /></label>
+                <label>Year <small>(optional)</small><input name="year" type="number" min="1900" max="2100" placeholder="for age" /></label>
+              </div>
+              <label>Note <small>(gift idea, how to celebrate)</small><input name="note" /></label>
+              <button class="btn">Save date</button>
+            </form>
+          </article>
+          <article class="card">
+            <h2>All dates</h2>
+            <ul class="occ-list big" id="allOccasions"></ul>
+          </article>
+        </div>
+      </section>
+
+      <!-- SETTINGS -->
+      <section class="view" id="view-settings" hidden>
+        <header class="day-head"><div><p class="eyebrow">Make it yours</p><h1>Settings</h1></div><img class="head-cat" src="img/hero.webp" alt="" /></header>
+        <div class="settings">
+          <article class="card">
+            <h2>You</h2>
+            <label class="field">Your first name (for the greeting)
+              <input id="setName" placeholder="Henry" />
+            </label>
+          </article>
+
+          <article class="card">
+            <h2>Outlook calendar</h2>
+            <div id="browserOutlook" hidden>
+              <p class="muted">Automatic Outlook sync needs the DayBrief desktop app, because Outlook does not let web pages opened from a file read your calendar. In this version, add meetings with the <b>+ Meeting</b> button on the Today page.</p>
+            </div>
+            <div id="appOutlook">
+            <p class="muted">Paste your calendar's published ICS link. DayBrief reads it every 30 minutes. It never changes your calendar.</p>
+            <label class="field">ICS link
+              <input id="setIcs" placeholder="https://outlook.office365.com/owa/calendar/.../calendar.ics" />
+            </label>
+            <div class="row">
+              <button class="btn btn-sm" id="saveIcsBtn">Save and sync</button>
+              <span class="muted" id="icsStatus"></span>
+            </div>
+            <details class="howto">
+              <summary>How do I get this link?</summary>
+              <ol>
+                <li>Open Outlook on the web (outlook.office.com) and click the gear icon for Settings.</li>
+                <li>Go to <b>Calendar</b>, then <b>Shared calendars</b>.</li>
+                <li>Under <b>Publish a calendar</b>, choose your calendar and <b>Can view all details</b> (or "titles and locations"), then click <b>Publish</b>.</li>
+                <li>Copy the <b>ICS</b> link (not the HTML one) and paste it above.</li>
+              </ol>
+              <p class="muted">Google Calendar and iCloud also give you an ICS link ("Secret address in iCal format"), so those work too. Treat the link like a password: anyone who has it can see your calendar.</p>
+            </details>
+            </div>
+          </article>
+
+          <article class="card">
+            <h2>Morning popup</h2>
+            <div id="browserPopup" hidden>
+              <p class="muted">The greeting bar appears the first time you open this page each day. To have it open by itself when you log in:</p>
+              <ul class="muted">
+                <li><b>Mac:</b> System Settings, General, Login Items, click <b>+</b> and choose this HTML file.</li>
+                <li><b>Windows:</b> press Win+R, type <code>shell:startup</code>, and put a shortcut to this HTML file in that folder.</li>
+              </ul>
+              <p class="muted">A web page cannot keep itself above other windows. The desktop app can.</p>
+            </div>
+            <div id="appPopup">
+            <label class="toggle"><input type="checkbox" id="setLogin" /> Open DayBrief when I log in</label>
+            <label class="toggle"><input type="checkbox" id="setPopup" /> Pop up in front of everything the first time I open my laptop each day</label>
+            <label class="field inline">Not before
+              <select id="setHour"></select>
+            </label>
+            <button class="btn btn-ghost btn-sm" id="testPopupBtn">Preview the popup</button>
+          </div>
+          </article>
+
+          <article class="card">
+            <h2>Reminders</h2>
+            <label class="field inline">Meeting notification
+              <select id="setRemind">
+                <option value="0">Off</option>
+                <option value="5">5 min before</option>
+                <option value="10">10 min before</option>
+                <option value="15">15 min before</option>
+                <option value="30">30 min before</option>
+              </select>
+            </label>
+            <button class="btn btn-ghost btn-sm" id="notifyBtn">Allow notifications in this browser</button>
+            <label class="field inline">Show birthdays and dates
+              <select id="setLead">
+                <option value="7">1 week ahead</option>
+                <option value="14">2 weeks ahead</option>
+                <option value="30">1 month ahead</option>
+              </select>
+            </label>
+          </article>
+
+          <article class="card">
+            <h2>Backup</h2>
+            <p class="muted">Your data stays on this computer. Export a backup file to move it to another computer.</p>
+            <div class="row">
+              <button class="btn btn-ghost btn-sm" id="exportBtn">Export backup</button>
+              <label class="btn btn-ghost btn-sm file-btn">Import backup<input type="file" id="importFile" accept="application/json" hidden /></label>
+            </div>
+          </article>
+          <p class="muted small" id="appInfo"></p>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  <script src="app.js"></script>
+</body>
+</html>

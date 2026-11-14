@@ -1,0 +1,52 @@
+{
+  "name": "daybrief",
+  "productName": "DayBrief",
+  "version": "1.0.0",
+  "description": "A personal morning board for meetings, to-dos, birthdays and anniversaries. Pops up first thing when you open your laptop.",
+  "main": "main.js",
+  "author": "Henry Yu",
+  "license": "MIT",
+  "scripts": {
+    "start": "electron .",
+    "dist:mac": "electron-builder --mac",
+    "dist:win": "electron-builder --win",
+    "dist": "electron-builder --mac --win"
+  },
+  "dependencies": {
+    "node-ical": "^0.20.1"
+  },
+  "devDependencies": {
+    "electron": "^33.2.0",
+    "electron-builder": "^25.1.8"
+  },
+  "build": {
+    "appId": "com.henryyu.daybrief",
+    "productName": "DayBrief",
+    "files": [
+      "main.js",
+      "preload.js",
+      "ics.js",
+      "src/**/*",
+      "build/icon.png",
+      "build/trayTemplate.png",
+      "build/trayTemplate@2x.png",
+      "build/tray-win.png"
+    ],
+    "mac": {
+      "category": "public.app-category.productivity",
+      "target": [
+        { "target": "dmg", "arch": ["universal"] }
+      ],
+      "icon": "build/icon.png"
+    },
+    "win": {
+      "target": ["nsis"],
+      "icon": "build/icon.png"
+    },
+    "nsis": {
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true,
+      "createDesktopShortcut": true
+    }
+  }
+}
