@@ -111,7 +111,7 @@ function expandEvents(text, rangeStart, rangeEnd) {
   return out;
 }
 
-async function loadCalendar(url, daysBack = 1, daysAhead = 21) {
+async function loadCalendar(url, daysBack = 35, daysAhead = 100) {
   const now = new Date();
   const start = new Date(now.getFullYear(), now.getMonth(), now.getDate() - daysBack);
   const end = new Date(now.getFullYear(), now.getMonth(), now.getDate() + daysAhead, 23, 59, 59);

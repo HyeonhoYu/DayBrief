@@ -7,7 +7,10 @@ css = (src / 'styles.css').read_text()
 js = (src / 'app.js').read_text()
 h = re.sub(r'\s*<meta http-equiv="Content-Security-Policy"[^>]*/>', '', h)
 h = h.replace('<link rel="stylesheet" href="styles.css" />', '<style>\n' + css + '\n</style>')
-h = h.replace('<script src="app.js"></script>', '<script>\n' + js.replace('</script>', '<\\/script>') + '\n</script>')
+def inline_script(m):
+    code = (src / m.group(1)).read_text()
+    return '<script>\n' + code.replace('</script>', '<\\/script>') + '\n</script>'
+h = re.sub(r'<script src="([\w./-]+)"></script>', inline_script, h)
 def data_uri(m):
     p = src / m.group(0)
     mime = 'image/webp' if p.suffix == '.webp' else 'image/png'

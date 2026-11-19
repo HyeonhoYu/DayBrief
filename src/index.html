@@ -28,7 +28,7 @@
       </div>
       <button class="nav-btn active" data-view="today">Today</button>
       <button class="nav-btn" data-view="tasks">Tasks <span class="count" id="taskCount"></span></button>
-      <button class="nav-btn" data-view="week">Next 7 days</button>
+      <button class="nav-btn" data-view="calendar">Calendar</button>
       <button class="nav-btn" data-view="occasions">Birthdays &amp; dates</button>
       <div class="side-spacer"></div>
       <button class="nav-btn" data-view="settings">Settings</button>
@@ -68,15 +68,19 @@
               </div>
             </form>
             <ol class="timeline" id="todaySchedule"></ol>
-            <h3 class="sub">Tomorrow</h3>
+            <h3 class="sub">Next 7 days</h3>
             <ol class="timeline compact" id="tomorrowSchedule"></ol>
           </article>
 
           <div class="stack">
             <article class="card">
               <div class="card-head"><h2>To do</h2></div>
+              <div class="focus-box" id="focusBox">
+                <div class="focus-head"><h3>Today</h3><span id="focusCount"></span></div>
+                <ul class="tasks" id="todayFocus"></ul>
+              </div>
               <form class="quick-add" id="quickTask">
-                <input name="title" placeholder="Add a task and press Enter" autocomplete="off" />
+                <input name="title" placeholder="Add a task and press Enter (paste a link too)" autocomplete="off" />
                 <input name="due" type="date" title="Due date" />
                 <select name="priority" title="Priority">
                   <option value="normal">Normal</option>
@@ -94,6 +98,19 @@
               </div>
               <ul class="occ-list" id="todayOccasions"></ul>
             </article>
+
+            <article class="card">
+              <div class="card-head"><h2>No due date</h2><span class="muted small" id="anyCount"></span></div>
+              <form class="quick-add slim" id="quickAny">
+                <input name="title" placeholder="Add a task with no deadline (paste a link too)" autocomplete="off" />
+              </form>
+              <ul class="tasks" id="anyTasks"></ul>
+            </article>
+
+            <article class="card">
+              <div class="card-head"><h2>Notes</h2><span class="muted small" id="noteSaved"></span></div>
+              <textarea id="notes" class="notes" placeholder="Ideas, reminders, anything. It stays here until you delete it."></textarea>
+            </article>
           </div>
         </div>
       </section>
@@ -103,7 +120,7 @@
         <header class="day-head"><div><p class="eyebrow">Everything on your plate</p><h1>Tasks</h1></div><img class="head-cat" src="img/jump.webp" alt="" /></header>
         <article class="card">
           <form class="quick-add" id="quickTask2">
-            <input name="title" placeholder="Add a task and press Enter" autocomplete="off" />
+            <input name="title" placeholder="Add a task and press Enter (paste a link too)" autocomplete="off" />
             <input name="due" type="date" title="Due date" />
             <select name="priority" title="Priority">
               <option value="normal">Normal</option>
@@ -121,9 +138,22 @@
       </section>
 
       <!-- WEEK -->
-      <section class="view" id="view-week" hidden>
-        <header class="day-head"><div><p class="eyebrow">Meetings and due dates</p><h1>Next 7 days</h1></div><img class="head-cat" src="img/fly.webp" alt="" /></header>
-        <div class="week" id="weekGrid"></div>
+      <section class="view view-wide" id="view-calendar" hidden>
+        <header class="day-head"><div><p class="eyebrow">Meetings, tasks and special dates</p><h1>Calendar</h1></div><img class="head-cat" src="img/fly.webp" alt="" /></header>
+        <article class="card cal-card">
+          <div class="cal-toolbar">
+            <button class="btn btn-ghost btn-sm" id="calToday">Today</button>
+            <button class="icon-btn" id="calPrev" aria-label="Previous">&#8249;</button>
+            <button class="icon-btn" id="calNext" aria-label="Next">&#8250;</button>
+            <h2 id="calTitle"></h2>
+            <div class="seg" role="tablist">
+              <button data-mode="week" class="active">Week</button>
+              <button data-mode="month">Month</button>
+            </div>
+          </div>
+          <div id="calWrap"></div>
+          <p class="muted small" id="calNote"></p>
+        </article>
       </section>
 
       <!-- OCCASIONS -->
@@ -148,6 +178,12 @@
                 <label>Day<input name="day" type="number" min="1" max="31" required /></label>
                 <label>Year <small>(optional)</small><input name="year" type="number" min="1900" max="2100" placeholder="for age" /></label>
               </div>
+              <div class="row checks">
+                <label class="check"><input type="checkbox" name="lunar" /> Lunar date (음력)</label>
+                <label class="check" id="occLeapWrap" hidden><input type="checkbox" name="leap" /> Leap month (윤달)</label>
+                <label class="check"><input type="checkbox" name="kst" /> Korea time (한국 날짜 기준)</label>
+              </div>
+              <p class="muted small occ-hint" id="occHint"></p>
               <label>Note <small>(gift idea, how to celebrate)</small><input name="note" /></label>
               <button class="btn">Save date</button>
             </form>
@@ -168,12 +204,93 @@
             <label class="field">Your first name (for the greeting)
               <input id="setName" placeholder="Henry" />
             </label>
+            <label class="toggle"><input type="checkbox" id="setKoreaClock" /> Show the current time in Korea on the Today page</label>
           </article>
 
           <article class="card">
             <h2>Outlook calendar</h2>
             <div id="browserOutlook" hidden>
-              <p class="muted">Automatic Outlook sync needs the DayBrief desktop app, because Outlook does not let web pages opened from a file read your calendar. In this version, add meetings with the <b>+ Meeting</b> button on the Today page.</p>
+              <p class="muted">Outlook does not let a web page read your calendar directly, so this version uses a small free "bridge" in your own Google account. Set it up once, then paste its address here. DayBrief reads it every 30 minutes and never changes your calendar.</p>
+              <label class="field">Bridge address (Google Apps Script web app URL)
+                <input id="setBridge" placeholder="https://script.google.com/macros/s/.../exec" />
+              </label>
+              <div class="row">
+                <button class="btn btn-sm" id="saveBridgeBtn">Save and sync</button>
+                <span class="muted" id="bridgeStatus"></span>
+              </div>
+              <details class="howto">
+                <summary>Set up the bridge (about 5 minutes, once)</summary>
+                <ol>
+                  <li><b>Get your Outlook ICS link.</b> In Outlook on the web (outlook.office.com), click the gear icon, then <b>Calendar</b>, <b>Shared calendars</b>. Under <b>Publish a calendar</b>, choose your calendar and <b>Can view all details</b>, click <b>Publish</b>, and copy the <b>ICS</b> link.</li>
+                  <li>Go to <b>script.google.com</b> and click <b>New project</b>.</li>
+                  <li>Delete everything in the editor and paste this code. Then replace <code>PASTE_YOUR_OUTLOOK_ICS_LINK_HERE</code> with your ICS link (keep the quote marks) and click the save icon.
+                    <pre class="code" id="bridgeCode">const ICS_URL = 'PASTE_YOUR_OUTLOOK_ICS_LINK_HERE';
+const DATA_FILE = 'DayBrief-data.json';
+
+function doGet(e) {
+  const p = (e &amp;&amp; e.parameter) || {};
+  const text = p.action === 'load' ? loadData_() : fetchIcs_();
+  return reply_(text, p.callback);
+}
+
+function doPost(e) {
+  const body = JSON.parse(e.postData.contents);
+  if (body.action === 'save' &amp;&amp; body.payload &amp;&amp; body.payload.data) saveData_(body.payload);
+  return ContentService.createTextOutput('ok');
+}
+
+function fetchIcs_() {
+  const url = ICS_URL.trim().replace(/^webcal:\/\//i, 'https://');
+  return UrlFetchApp.fetch(url, { muteHttpExceptions: true, followRedirects: true }).getContentText();
+}
+
+function file_() {
+  const files = DriveApp.getFilesByName(DATA_FILE);
+  return files.hasNext() ? files.next() : null;
+}
+
+function loadData_() {
+  const f = file_();
+  return f ? f.getBlob().getDataAsString() : '';
+}
+
+function saveData_(payload) {
+  const lock = LockService.getScriptLock();
+  lock.waitLock(20000);
+  try {
+    const old = loadData_();
+    if (old) {
+      const prev = JSON.parse(old);
+      if ((prev.savedAt || 0) > (payload.savedAt || 0)) return; // keep the newer copy
+    }
+    const text = JSON.stringify(payload);
+    const f = file_();
+    if (f) f.setContent(text); else DriveApp.createFile(DATA_FILE, text, 'application/json');
+  } finally {
+    lock.releaseLock();
+  }
+}
+
+function reply_(text, cb) {
+  if (cb &amp;&amp; /^[A-Za-z_$][\w$]*$/.test(cb)) {
+    return ContentService.createTextOutput(cb + '(' + JSON.stringify(text) + ');')
+      .setMimeType(ContentService.MimeType.JAVASCRIPT);
+  }
+  return ContentService.createTextOutput(text).setMimeType(ContentService.MimeType.TEXT);
+}
+
+function authorize() {
+  DriveApp.getRootFolder();
+  UrlFetchApp.fetch('https://www.google.com');
+}</pre>
+                    <button class="btn btn-ghost btn-sm" id="copyCodeBtn" type="button">Copy code</button>
+                  </li>
+                  <li>Click <b>Deploy</b>, then <b>New deployment</b>. Click the gear next to "Select type" and choose <b>Web app</b>. Set <b>Execute as: Me</b> and <b>Who has access: Anyone</b>, then click <b>Deploy</b>.</li>
+                  <li>Google asks you to authorize. Choose your account. If you see "Google hasn't verified this app", click <b>Advanced</b>, then <b>Go to (your project)</b>. This is your own script, so it is safe.</li>
+                  <li>Copy the <b>Web app URL</b> (it ends with <code>/exec</code>) and paste it in the box above.</li>
+                </ol>
+                <p class="muted">Keep the bridge address private, like the ICS link: anyone who has it can see your calendar. To stop sharing, delete the deployment in Apps Script or unpublish the calendar in Outlook.</p>
+              </details>
             </div>
             <div id="appOutlook">
             <p class="muted">Paste your calendar's published ICS link. DayBrief reads it every 30 minutes. It never changes your calendar.</p>
@@ -238,6 +355,27 @@
             </label>
           </article>
 
+          <article class="card" id="browserSync" hidden>
+            <h2>Sync across computers</h2>
+            <p class="muted">Keep your tasks, dates and notes in your own Google Drive (one file named <b>DayBrief-data.json</b>), so every computer where you open DayBrief shows the same thing. It uses the same bridge as the Outlook calendar.</p>
+            <label class="toggle"><input type="checkbox" id="setSync" /> Sync my DayBrief data through my Google Drive</label>
+            <div class="row">
+              <button class="btn btn-ghost btn-sm" id="syncNowBtn">Sync now</button>
+              <span class="muted" id="syncState"></span>
+            </div>
+            <details class="howto">
+              <summary>Turn on sync (once, about 3 minutes)</summary>
+              <ol>
+                <li>In Apps Script, open your bridge project. Copy the first line (the one with your ICS link) somewhere safe.</li>
+                <li>Replace all the code with the newest code from <b>Outlook calendar &gt; Set up the bridge</b> (use <b>Copy code</b>), then put your first line back and click the save icon.</li>
+                <li>At the top of the editor, choose the function <b>authorize</b> and click <b>Run</b>. Allow access to Google Drive when asked (Advanced, then Go to your project).</li>
+                <li>Click <b>Deploy</b>, <b>Manage deployments</b>, the pencil icon, Version: <b>New version</b>, then <b>Deploy</b>. The bridge address stays the same.</li>
+                <li>Tick the box above on this computer. On your other computer, open DayBrief, connect the same bridge address, and tick the box there too.</li>
+              </ol>
+              <p class="muted">Changes are saved a few seconds after you make them and checked every few minutes and whenever you come back to the tab. If two computers change things at the same moment, the newest save wins.</p>
+            </details>
+          </article>
+
           <article class="card">
             <h2>Backup</h2>
             <p class="muted">Your data stays on this computer. Export a backup file to move it to another computer.</p>
@@ -252,7 +390,10 @@
     </main>
   </div>
 
+  <div class="cal-pop" id="calPop" hidden></div>
   <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  <script src="vendor/ical.min.js"></script>
+  <script src="ics-browser.js"></script>
   <script src="app.js"></script>
 </body>
 </html>
