@@ -420,3 +420,9 @@ pre.code code, pre.code { white-space: pre; }
   display: inline-block; font-size: 10.5px; font-weight: 700; text-transform: uppercase; letter-spacing: .05em;
   color: var(--leaf); background: var(--leaf-soft); padding: 1px 7px; border-radius: 999px; margin-right: 6px; vertical-align: 1px;
 }
+.news-tools { display: flex; align-items: center; gap: 10px; }
+.seg.seg-sm { padding: 2px; }
+.seg.seg-sm button { padding: 3px 10px; font-size: 12px; }
+.news-tag:is(:not(:empty)) { white-space: nowrap; }
+.news-tag.korea { color: var(--sky); background: var(--sky-soft); }
+.news-item p, .news-title { word-break: keep-all; overflow-wrap: anywhere; }

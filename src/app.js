@@ -501,15 +501,19 @@
     }
     const upd = n.updated ? new Date(n.updated) : null;
     const stale = upd && (Date.now() - upd.getTime()) > 2 * 86400000;
-    $('#newsUpdated').textContent = upd ? `${stale ? 'Last updated' : 'Updated'} ${upd.toLocaleDateString([], { weekday: 'short', month: 'short', day: 'numeric' })}` : '';
-    n.items.slice(0, 6).forEach(it => {
+    $('#newsUpdated').textContent = upd ? `${stale ? 'Last updated' : 'Updated'} ${upd.toLocaleDateString([], { month: 'short', day: 'numeric' })}` : '';
+    const ko = state.settings.newsLang === 'ko';
+    $$('.news-tools .seg button').forEach(b => b.classList.toggle('active', b.dataset.lang === (ko ? 'ko' : 'en')));
+    n.items.slice(0, 8).forEach(it => {
       const href = normalizeLink(it.url);
+      const title = ko && it.title_ko ? it.title_ko : it.title;
+      const summary = ko && it.summary_ko ? it.summary_ko : (it.summary || '');
       const li = document.createElement('li');
       li.className = 'news-item';
       li.innerHTML = `
-        ${it.tag ? `<span class="news-tag">${esc(it.tag)}</span>` : ''}
-        <a class="news-title" href="#" ${href ? `data-url="${esc(href)}"` : ''}>${esc(it.title)}</a>
-        <p>${esc(it.summary || '')}</p>
+        ${it.tag ? `<span class="news-tag ${it.tag === 'Korea' ? 'korea' : ''}">${esc(it.tag)}</span>` : ''}
+        <a class="news-title" href="#" ${href ? `data-url="${esc(href)}"` : ''}>${esc(title)}</a>
+        <p>${esc(summary)}</p>
         <span class="news-src">${esc(it.source || (href ? linkLabel(href) : ''))}${it.published ? ' · ' + esc(it.published) : ''}</span>`;
       ul.appendChild(li);
     });
@@ -815,6 +819,11 @@
       f.addEventListener('submit', (e) => { e.preventDefault(); addTask(f); });
       f.addEventListener('keydown', (e) => { if (e.key === 'Enter' && e.target.tagName !== 'BUTTON') { e.preventDefault(); addTask(f); } });
     });
+
+    // AI news language
+    $$('.news-tools .seg button').forEach(b => b.addEventListener('click', () => {
+      state.settings.newsLang = b.dataset.lang; save(); renderNews();
+    }));
 
     // calendar controls
     $('#calToday').addEventListener('click', () => { calAnchor = new Date(); calScrollReset = true; renderCalendar(); });
