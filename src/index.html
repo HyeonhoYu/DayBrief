@@ -76,7 +76,13 @@
           <article class="card news-card">
             <div class="card-head">
               <h2>AI News</h2>
-              <span class="muted small" id="newsUpdated"></span>
+              <div class="news-tools">
+                <span class="muted small" id="newsUpdated"></span>
+                <div class="seg seg-sm" role="tablist" aria-label="News language">
+                  <button data-lang="en" class="active">EN</button>
+                  <button data-lang="ko">한국어</button>
+                </div>
+              </div>
             </div>
             <ul class="news-list" id="newsList"></ul>
           </article>

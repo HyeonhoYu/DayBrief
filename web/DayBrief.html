@@ -428,6 +428,12 @@ pre.code code, pre.code { white-space: pre; }
   display: inline-block; font-size: 10.5px; font-weight: 700; text-transform: uppercase; letter-spacing: .05em;
   color: var(--leaf); background: var(--leaf-soft); padding: 1px 7px; border-radius: 999px; margin-right: 6px; vertical-align: 1px;
 }
+.news-tools { display: flex; align-items: center; gap: 10px; }
+.seg.seg-sm { padding: 2px; }
+.seg.seg-sm button { padding: 3px 10px; font-size: 12px; }
+.news-tag:is(:not(:empty)) { white-space: nowrap; }
+.news-tag.korea { color: var(--sky); background: var(--sky-soft); }
+.news-item p, .news-title { word-break: keep-all; overflow-wrap: anywhere; }
 
 </style>
 </head>
@@ -499,7 +505,13 @@ pre.code code, pre.code { white-space: pre; }
           <article class="card news-card">
             <div class="card-head">
               <h2>AI News</h2>
-              <span class="muted small" id="newsUpdated"></span>
+              <div class="news-tools">
+                <span class="muted small" id="newsUpdated"></span>
+                <div class="seg seg-sm" role="tablist" aria-label="News language">
+                  <button data-lang="en" class="active">EN</button>
+                  <button data-lang="ko">한국어</button>
+                </div>
+              </div>
             </div>
             <ul class="news-list" id="newsList"></ul>
           </article>
@@ -1409,15 +1421,19 @@ var ICAL;"object"==typeof module?ICAL=module.exports:"undefined"!=typeof HTMLScr
     }
     const upd = n.updated ? new Date(n.updated) : null;
     const stale = upd && (Date.now() - upd.getTime()) > 2 * 86400000;
-    $('#newsUpdated').textContent = upd ? `${stale ? 'Last updated' : 'Updated'} ${upd.toLocaleDateString([], { weekday: 'short', month: 'short', day: 'numeric' })}` : '';
-    n.items.slice(0, 6).forEach(it => {
+    $('#newsUpdated').textContent = upd ? `${stale ? 'Last updated' : 'Updated'} ${upd.toLocaleDateString([], { month: 'short', day: 'numeric' })}` : '';
+    const ko = state.settings.newsLang === 'ko';
+    $$('.news-tools .seg button').forEach(b => b.classList.toggle('active', b.dataset.lang === (ko ? 'ko' : 'en')));
+    n.items.slice(0, 8).forEach(it => {
       const href = normalizeLink(it.url);
+      const title = ko && it.title_ko ? it.title_ko : it.title;
+      const summary = ko && it.summary_ko ? it.summary_ko : (it.summary || '');
       const li = document.createElement('li');
       li.className = 'news-item';
       li.innerHTML = `
-        ${it.tag ? `<span class="news-tag">${esc(it.tag)}</span>` : ''}
-        <a class="news-title" href="#" ${href ? `data-url="${esc(href)}"` : ''}>${esc(it.title)}</a>
-        <p>${esc(it.summary || '')}</p>
+        ${it.tag ? `<span class="news-tag ${it.tag === 'Korea' ? 'korea' : ''}">${esc(it.tag)}</span>` : ''}
+        <a class="news-title" href="#" ${href ? `data-url="${esc(href)}"` : ''}>${esc(title)}</a>
+        <p>${esc(summary)}</p>
         <span class="news-src">${esc(it.source || (href ? linkLabel(href) : ''))}${it.published ? ' · ' + esc(it.published) : ''}</span>`;
       ul.appendChild(li);
     });
@@ -1723,6 +1739,11 @@ var ICAL;"object"==typeof module?ICAL=module.exports:"undefined"!=typeof HTMLScr
       f.addEventListener('submit', (e) => { e.preventDefault(); addTask(f); });
       f.addEventListener('keydown', (e) => { if (e.key === 'Enter' && e.target.tagName !== 'BUTTON') { e.preventDefault(); addTask(f); } });
     });
+
+    // AI news language
+    $$('.news-tools .seg button').forEach(b => b.addEventListener('click', () => {
+      state.settings.newsLang = b.dataset.lang; save(); renderNews();
+    }));
 
     // calendar controls
     $('#calToday').addEventListener('click', () => { calAnchor = new Date(); calScrollReset = true; renderCalendar(); });
