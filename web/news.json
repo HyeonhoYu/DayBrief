@@ -1,45 +1,53 @@
 {
-  "updated": "2026-11-20T00:40:00-05:00",
+  "updated": "2026-11-20T05:46:02-05:00",
   "items": [
     {
-      "title": "Anthropic goes public and closes its first trading day near a $1.76 trillion valuation",
-      "summary": "Shares priced at $83, opened sharply higher, and finished the day about 17% above the IPO price, making it one of the largest market debuts for an AI company.",
-      "source": "CNN",
-      "url": "https://www.cnn.com/2026/11/19/business/live-news/anthropic-ipo",
+      "title": "Trump tells APEC he opposes strict rules on superintelligence",
+      "summary": "Speaking at the summit in Shenzhen, Trump argued heavy regulation would hold back advanced AI, days after new US limits on Chinese remote access to top AI chips.",
+      "source": "Business Standard",
+      "url": "https://business-standard.com/amp/world-news/trump-warns-against-robust-regulations-that-would-stifle-ai-industry-126111900286_1.html",
       "published": "Nov 19",
+      "tag": "Policy"
+    },
+    {
+      "title": "Nvidia stops shipping H200 chips to China",
+      "summary": "Interim CEO Colette Kress told investors Nvidia has halted licensed Hopper-generation chip shipments to China with no plans to resume, as Beijing also restricts imports.",
+      "source": "Reuters via Business Day",
+      "url": "https://www.businessday.co.za/companies/2026-11-18-nvidia-stops-shipping-us-approved-ai-chips-to-china/",
+      "published": "Nov 18",
       "tag": "Industry"
     },
     {
-      "title": "Google says schools can't keep Search without its AI features, and some districts are pushing back",
-      "summary": "Large districts such as New York City, Los Angeles and Chicago are weighing other search engines, and LAUSD says it has turned off AI Overviews while it reviews whether the tools support learning.",
-      "source": "EdSurge",
-      "url": "https://www.edsurge.com/news/google-says-schools-cant-have-search-without-ai-some-are-finding-a-way",
+      "title": "Students and professors push back on campus AI deals",
+      "summary": "A growing number of US students and faculty are refusing generative AI and petitioning colleges to drop AI spending, citing worries about weakened critical thinking.",
+      "source": "Seoul Economic Daily",
+      "url": "https://en.sedaily.com/world/2026/11/19/us-campuses-push-back-against-ai-over-learning-concerns",
       "published": "Nov 19",
       "tag": "Education"
     },
     {
-      "title": "Parents and teachers protest Google's push of AI tools into classrooms",
-      "summary": "Demonstrations outside Google offices in seven cities reflect growing worry among families and educators about how quickly AI products are entering K-12 schools.",
-      "source": "NBC News",
-      "url": "https://www.nbcnews.com/news/education/google-faces-reckoning-ai-tools-classrooms-schools-rcna609572",
-      "published": "Nov 18",
-      "tag": "Education"
-    },
-    {
-      "title": "Sarasota adopts a district AI policy as students call it too vague",
-      "summary": "High school students told the board the guidelines do not say what teachers should or should not use AI for, a gap many districts are still working to close.",
-      "source": "WUSF",
-      "url": "https://www.wusf.org/education/2026-11-18/sarasota-school-district-board-adopts-ai-policy-students-object",
-      "published": "Nov 18",
-      "tag": "Education"
-    },
-    {
-      "title": "Google releases Gemini 4 Neon, a fast model priced for everyday tasks",
-      "summary": "The new model targets quick work in coding, writing and science at a lower price, and early benchmark reports place it near the top tier.",
-      "source": "Sam on AI",
-      "url": "https://samonai.substack.com/p/ai-brief-november-19-2026",
+      "title": "New AI companion laws may reach classroom chatbots",
+      "summary": "At a California edtech conference, experts warned that state companion-chatbot laws, which limit memory and session length for kids, may not exempt K-12 learning tools.",
+      "source": "GovTech",
+      "url": "https://www.govtech.com/education/k-12/cite26-new-ai-companion-laws-complicate-use-in-ed-tech",
       "published": "Nov 19",
-      "tag": "Models"
+      "tag": "Education"
+    },
+    {
+      "title": "Austin ISD adopts its first AI policy",
+      "summary": "Students may use only district-approved AI tools with teacher permission, and the district has 18 months to write detailed rules for students, teachers and staff.",
+      "source": "The Austin Chronicle",
+      "url": "https://www.austinchronicle.com/news/aisd-writes-ai-policy-into-the-books/",
+      "published": "Nov 19",
+      "tag": "Education"
+    },
+    {
+      "title": "UN rights chief calls AI governance outdated and concentrated",
+      "summary": "Volker Türk said a handful of tech firms control most global AI computing power and urged rights-based regulation and stronger safeguards from frontier labs.",
+      "source": "Euronews",
+      "url": "https://euronews.com/2026/11/19/ai-being-run-in-a-medieval-way-says-un-rights-chief",
+      "published": "Nov 19",
+      "tag": "Safety"
     }
   ]
 }
