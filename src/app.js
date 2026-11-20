@@ -469,6 +469,52 @@
     return li;
   }
 
+  // ---------- AI news (updated daily by a scheduled Claude task) ----------
+  const NEWS_URLS = [
+    'https://raw.githubusercontent.com/HyeonhoYu/DayBrief/main/web/news.json',
+    'https://hyeonhoyu.github.io/DayBrief/web/news.json'
+  ];
+  let newsBusy = false;
+  async function loadNews() {
+    if (newsBusy) return;
+    newsBusy = true;
+    try {
+      for (const u of NEWS_URLS) {
+        try {
+          const res = await fetch(u + '?t=' + Math.floor(Date.now() / 600000), { cache: 'no-store' });
+          if (!res.ok) continue;
+          const data = await res.json();
+          if (data && Array.isArray(data.items)) { state.news = data; save(); renderNews(); return; }
+        } catch (e) { /* try the next address */ }
+      }
+    } finally { newsBusy = false; }
+  }
+
+  function renderNews() {
+    const ul = $('#newsList'); if (!ul) return;
+    const n = state.news;
+    ul.innerHTML = '';
+    if (!n || !n.items || !n.items.length) {
+      ul.innerHTML = '<li class="empty">Today\'s AI stories will appear here each morning.</li>';
+      $('#newsUpdated').textContent = '';
+      return;
+    }
+    const upd = n.updated ? new Date(n.updated) : null;
+    const stale = upd && (Date.now() - upd.getTime()) > 2 * 86400000;
+    $('#newsUpdated').textContent = upd ? `${stale ? 'Last updated' : 'Updated'} ${upd.toLocaleDateString([], { weekday: 'short', month: 'short', day: 'numeric' })}` : '';
+    n.items.slice(0, 6).forEach(it => {
+      const href = normalizeLink(it.url);
+      const li = document.createElement('li');
+      li.className = 'news-item';
+      li.innerHTML = `
+        ${it.tag ? `<span class="news-tag">${esc(it.tag)}</span>` : ''}
+        <a class="news-title" href="#" ${href ? `data-url="${esc(href)}"` : ''}>${esc(it.title)}</a>
+        <p>${esc(it.summary || '')}</p>
+        <span class="news-src">${esc(it.source || (href ? linkLabel(href) : ''))}${it.published ? ' · ' + esc(it.published) : ''}</span>`;
+      ul.appendChild(li);
+    });
+  }
+
   // ---------- render: tasks ----------
   function renderTasks() {
     const wrap = $('#taskGroups'); wrap.innerHTML = '';
@@ -693,7 +739,7 @@
   }
 
   function render() {
-    renderToday(); renderTasks(); renderCalendar(); renderOccasions(); renderSettings(); renderSync();
+    renderToday(); renderNews(); renderTasks(); renderCalendar(); renderOccasions(); renderSettings(); renderSync();
   }
 
   // ---------- navigation ----------
@@ -1196,5 +1242,11 @@
     bind();
     render();
     if (!hasApi) browserMode();
+    loadNews();
+    setInterval(loadNews, 3 * 60 * 60 * 1000);
+    document.addEventListener('visibilitychange', () => {
+      const u = state.news && state.news.updated ? new Date(state.news.updated).getTime() : 0;
+      if (document.visibilityState === 'visible' && Date.now() - u > 20 * 60 * 60 * 1000) loadNews();
+    });
   })();
 })();

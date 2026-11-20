@@ -1,0 +1,45 @@
+{
+  "updated": "2026-11-20T00:40:00-05:00",
+  "items": [
+    {
+      "title": "Anthropic goes public and closes its first trading day near a $1.76 trillion valuation",
+      "summary": "Shares priced at $83, opened sharply higher, and finished the day about 17% above the IPO price, making it one of the largest market debuts for an AI company.",
+      "source": "CNN",
+      "url": "https://www.cnn.com/2026/11/19/business/live-news/anthropic-ipo",
+      "published": "Nov 19",
+      "tag": "Industry"
+    },
+    {
+      "title": "Google says schools can't keep Search without its AI features, and some districts are pushing back",
+      "summary": "Large districts such as New York City, Los Angeles and Chicago are weighing other search engines, and LAUSD says it has turned off AI Overviews while it reviews whether the tools support learning.",
+      "source": "EdSurge",
+      "url": "https://www.edsurge.com/news/google-says-schools-cant-have-search-without-ai-some-are-finding-a-way",
+      "published": "Nov 19",
+      "tag": "Education"
+    },
+    {
+      "title": "Parents and teachers protest Google's push of AI tools into classrooms",
+      "summary": "Demonstrations outside Google offices in seven cities reflect growing worry among families and educators about how quickly AI products are entering K-12 schools.",
+      "source": "NBC News",
+      "url": "https://www.nbcnews.com/news/education/google-faces-reckoning-ai-tools-classrooms-schools-rcna609572",
+      "published": "Nov 18",
+      "tag": "Education"
+    },
+    {
+      "title": "Sarasota adopts a district AI policy as students call it too vague",
+      "summary": "High school students told the board the guidelines do not say what teachers should or should not use AI for, a gap many districts are still working to close.",
+      "source": "WUSF",
+      "url": "https://www.wusf.org/education/2026-11-18/sarasota-school-district-board-adopts-ai-policy-students-object",
+      "published": "Nov 18",
+      "tag": "Education"
+    },
+    {
+      "title": "Google releases Gemini 4 Neon, a fast model priced for everyday tasks",
+      "summary": "The new model targets quick work in coding, writing and science at a lower price, and early benchmark reports place it near the top tier.",
+      "source": "Sam on AI",
+      "url": "https://samonai.substack.com/p/ai-brief-november-19-2026",
+      "published": "Nov 19",
+      "tag": "Models"
+    }
+  ]
+}
