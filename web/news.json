@@ -1,85 +1,65 @@
 {
-  "updated": "2026-11-20T05:46:02-05:00",
+  "updated": "2026-11-21T05:51:06-05:00",
   "items": [
     {
-      "title": "Trump tells APEC he opposes strict rules on superintelligence",
-      "summary": "Speaking at the summit in Shenzhen, Trump argued heavy regulation would hold back advanced AI, days after new US limits on Chinese remote access to top AI chips.",
-      "source": "Business Standard",
-      "url": "https://business-standard.com/amp/world-news/trump-warns-against-robust-regulations-that-would-stifle-ai-industry-126111900286_1.html",
+      "title": "Anthropic's Nasdaq debut becomes the largest IPO on record",
+      "summary": "The Claude maker sold 980 million shares at $83 and began trading under ANT on Nov 19. Shares opened 34% higher and closed about 17% above the offer price.",
+      "title_ko": "앤트로픽, 사상 최대 규모 IPO로 나스닥 상장",
+      "summary_ko": "클로드 개발사 앤트로픽이 주당 83달러에 9억 8천만 주를 팔고 19일 'ANT'로 거래를 시작했어요. 주가는 34% 높게 출발해 공모가보다 약 17% 오른 채 마감했어요.",
+      "source": "Al Jazeera",
+      "url": "https://www.aljazeera.com/economy/2026/11/19/anthropic-starts-trading-in-the-us-after-blockbuster-ipo",
       "published": "Nov 19",
-      "tag": "Policy",
-      "title_ko": "트럼프, APEC에서 초지능 AI 강한 규제에 반대",
-      "summary_ko": "중국 선전에서 열린 정상회의에서 트럼프 대통령은 과도한 규제가 첨단 AI 발전을 막는다고 주장했어요. 미국이 중국의 최고급 AI 칩 원격 접근을 새로 제한한 지 며칠 만이에요."
+      "tag": "Industry"
     },
     {
-      "title": "Nvidia stops shipping H200 chips to China",
-      "summary": "Interim CEO Colette Kress told investors Nvidia has halted licensed Hopper-generation chip shipments to China with no plans to resume, as Beijing also restricts imports.",
-      "source": "Reuters via Business Day",
-      "url": "https://www.businessday.co.za/companies/2026-11-18-nvidia-stops-shipping-us-approved-ai-chips-to-china/",
-      "published": "Nov 18",
-      "tag": "Industry",
-      "title_ko": "엔비디아, 중국행 H200 칩 출하 중단",
-      "summary_ko": "콜레트 크레스 임시 CEO는 허가받은 호퍼 세대 칩의 중국 출하를 멈췄고 재개 계획도 없다고 투자자들에게 밝혔어요. 중국도 수입을 제한하고 있어요."
-    },
-    {
-      "title": "Students and professors push back on campus AI deals",
-      "summary": "A growing number of US students and faculty are refusing generative AI and petitioning colleges to drop AI spending, citing worries about weakened critical thinking.",
-      "source": "Seoul Economic Daily",
-      "url": "https://en.sedaily.com/world/2026/11/19/us-campuses-push-back-against-ai-over-learning-concerns",
+      "title": "NYC, LA and Chicago schools weigh dropping Google Search over AI",
+      "summary": "Leaders of the three largest US districts say they may switch search engines after Google said schools turning off its AI tools would also lose Search. Google says the AI tools will be off by default next year.",
+      "title_ko": "뉴욕·LA·시카고 교육청, AI 문제로 구글 검색 퇴출 검토",
+      "summary_ko": "구글이 AI 기능을 끄는 학교는 검색도 쓸 수 없다고 하자 미국 3대 교육구가 다른 검색엔진으로 바꿀 수 있다고 밝혔어요. 구글은 내년부터 AI 도구를 기본적으로 꺼 두겠다고 했어요.",
+      "source": "Gizmodo",
+      "url": "https://gizmodo.com/nyc-la-and-chicago-school-districts-all-discussing-alternatives-to-ai-pilled-google-2000842174",
       "published": "Nov 19",
-      "tag": "Education",
-      "title_ko": "미국 대학가, 캠퍼스 AI 도입에 학생·교수 반발",
-      "summary_ko": "생성형 AI 사용을 거부하고 대학에 AI 관련 지출 중단을 요구하는 학생과 교수가 늘고 있어요. 비판적 사고력이 약해질 수 있다는 우려 때문이에요."
+      "tag": "Education"
     },
     {
-      "title": "Korea teams up with Samsung, Hyundai, LG and Naver on AI factories for small firms",
-      "summary": "Korea's SME ministry signed cooperation pacts to bring AI-based smart factory systems to more than 2,000 smaller manufacturers, a plan worth about 2 trillion won.",
-      "title_ko": "중기부, 삼성·현대차·LG·네이버와 중소기업 AI 공장 협력",
-      "summary_ko": "중소벤처기업부가 대기업들과 협약을 맺고 약 2조 원 규모로 2,000곳이 넘는 중소 제조기업에 AI 기반 스마트공장을 보급하기로 했어요.",
-      "source": "Seoul Economic Daily",
-      "url": "https://en.sedaily.com/business/2026/11/18/korea-to-spend-2-trillion-won-on-ai-factories-with-samsung",
-      "published": "Nov 18",
+      "title": "Korea to check AI usage logs for cheating on the college entrance exam",
+      "summary": "After this week's suneung, the government will work with AI companies and telecoms to see whether exam questions were fed into AI tools during the test, as the president ordered a full investigation.",
+      "title_ko": "정부, 수능 'AI 커닝' 빅테크 이용기록으로 추적",
+      "summary_ko": "정부가 수능이 끝난 뒤에도 AI 기업·통신사와 협력해 시험 시간 중 문제가 AI에 입력됐는지 확인하기로 했어요. 대통령은 철저한 조사와 책임 추궁을 지시했어요.",
+      "source": "글로벌이코노믹",
+      "url": "https://www.g-enews.com/article/General-News/2026/11/202611201848552261112616b072_1",
+      "published": "Nov 20",
       "tag": "Korea"
     },
     {
-      "title": "New AI companion laws may reach classroom chatbots",
-      "summary": "At a California edtech conference, experts warned that state companion-chatbot laws, which limit memory and session length for kids, may not exempt K-12 learning tools.",
-      "source": "GovTech",
-      "url": "https://www.govtech.com/education/k-12/cite26-new-ai-companion-laws-complicate-use-in-ed-tech",
+      "title": "Gemini on Mac can now operate apps for you",
+      "summary": "Google added computer use to the Gemini Mac app, letting it click and type through multi-step tasks in a background window. It pauses for logins and payments and is rolling out to paid US subscribers.",
+      "title_ko": "맥용 제미나이, 앱을 대신 조작하는 기능 추가",
+      "summary_ko": "구글이 맥용 제미나이 앱에 컴퓨터 사용 기능을 넣어, 백그라운드 창에서 클릭과 입력으로 여러 단계 작업을 대신 처리해요. 로그인과 결제 단계에서는 멈추며 미국 유료 구독자부터 제공돼요.",
+      "source": "9to5Google",
+      "url": "https://9to5google.com/2026/11/19/gemini-mac-computer-use/",
       "published": "Nov 19",
-      "tag": "Education",
-      "title_ko": "새 AI 동반자 챗봇 법, 교실용 챗봇에도 적용될 수도",
-      "summary_ko": "캘리포니아 에듀테크 콘퍼런스에서 전문가들은 아동 대상 챗봇의 기억과 사용 시간을 제한하는 주 법이 K-12 학습 도구를 예외로 두지 않을 수 있다고 경고했어요."
+      "tag": "Models"
     },
     {
-      "title": "An Incheon middle school teacher builds a free AI coding platform for classrooms",
-      "summary": "After vendors quoted huge development costs, teacher Kim Seok-jeon built BrixelAI, a Scratch-based block coding tool that needs no login or fees and runs in the browser.",
-      "title_ko": "인천 중학교 교사가 직접 만든 무료 교실용 AI 코딩 플랫폼",
-      "summary_ko": "업체들이 수억 원의 개발비를 요구하자 송도중 김석전 교사가 스크래치 기반 블록코딩 도구 '브릭셀AI'를 직접 만들어 로그인과 비용 없이 무료로 공개했어요.",
-      "source": "한국교육신문",
-      "url": "https://hangyo.com/news/article.html?no=110131",
-      "published": "Nov 18",
+      "title": "Survey: teacher prep programs embrace AI, but faculty want training",
+      "summary": "In an EdWeek survey of 268 teacher educators, most said they teach AI literacy to future teachers, yet only 14% get ongoing AI training while 68% want it.",
+      "title_ko": "교사양성 과정 AI 교육 확산, 교수진은 연수 부족 호소",
+      "summary_ko": "에듀케이션위크가 교사교육자 268명을 조사한 결과, 대부분이 예비교사에게 AI 리터러시를 가르치고 있었어요. 하지만 지속적인 AI 연수를 받는 비율은 14%뿐이고 68%가 연수를 원했어요.",
+      "source": "Education Week",
+      "url": "https://www.edweek.org/teaching-learning/ai-raises-big-questions-for-the-future-of-teacher-education/2026/11",
+      "published": "Nov 16",
+      "tag": "Education"
+    },
+    {
+      "title": "KOSPI falls over 4% as AI investment worries hit chip stocks",
+      "summary": "Korea's main index slipped back below 5,000 on Nov 20, with Samsung Electronics and SK Hynix each down about 6% after a broad US tech sell-off.",
+      "title_ko": "AI 투자 우려에 코스피 4% 넘게 급락",
+      "summary_ko": "20일 코스피가 다시 5,000선 아래로 떨어졌어요. 미국 기술주 급락 여파로 삼성전자와 SK하이닉스가 각각 약 6% 하락했어요.",
+      "source": "SBS News",
+      "url": "https://news.sbs.co.kr/english/article.do?news_id=N1008855657",
+      "published": "Nov 20",
       "tag": "Korea"
-    },
-    {
-      "title": "Austin ISD adopts its first AI policy",
-      "summary": "Students may use only district-approved AI tools with teacher permission, and the district has 18 months to write detailed rules for students, teachers and staff.",
-      "source": "The Austin Chronicle",
-      "url": "https://www.austinchronicle.com/news/aisd-writes-ai-policy-into-the-books/",
-      "published": "Nov 19",
-      "tag": "Education",
-      "title_ko": "텍사스 오스틴 교육구, 첫 AI 정책 채택",
-      "summary_ko": "학생은 교사 허락을 받아 교육구가 승인한 AI 도구만 쓸 수 있어요. 교육구는 18개월 안에 학생, 교사, 직원용 세부 규칙을 만들어야 해요."
-    },
-    {
-      "title": "UN rights chief calls AI governance outdated and concentrated",
-      "summary": "Volker Türk said a handful of tech firms control most global AI computing power and urged rights-based regulation and stronger safeguards from frontier labs.",
-      "source": "Euronews",
-      "url": "https://euronews.com/2026/11/19/ai-being-run-in-a-medieval-way-says-un-rights-chief",
-      "published": "Nov 19",
-      "tag": "Safety",
-      "title_ko": "유엔 인권최고대표, AI 거버넌스가 낡고 소수에 집중됐다고 비판",
-      "summary_ko": "폴커 튀르크 대표는 소수 기술 기업이 전 세계 AI 컴퓨팅 자원 대부분을 쥐고 있다며, 인권에 기반한 규제와 최첨단 AI 기업의 더 강한 안전장치를 촉구했어요."
     }
   ]
 }
