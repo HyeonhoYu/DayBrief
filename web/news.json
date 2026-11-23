@@ -1,64 +1,64 @@
 {
-  "updated": "2026-11-22T05:45:59-05:00",
+  "updated": "2026-11-23T05:52:39-05:00",
   "items": [
     {
-      "title": "Nasdaq 100 posts its worst week since 2020 as AI doubts spread",
-      "summary": "The tech index fell 5.6% on Friday and the S&P 500 slid into a correction. Nvidia dropped 14% after a report that US regulators are examining its accounting.",
-      "title_ko": "AI 거품 우려에 나스닥100, 2020년 이후 최악의 한 주",
-      "summary_ko": "기술주 중심 나스닥100 지수가 금요일 하루 5.6% 떨어졌고 S&P500은 조정 국면에 들어갔어요. 엔비디아는 미국 당국이 회계 관행을 조사한다는 보도에 14% 급락했어요.",
-      "source": "Bloomberg via SWI swissinfo.ch",
-      "url": "https://www.swissinfo.ch/eng/nasdaq-100-has-worst-week-since-2020-on-ai-drama:-markets-wrap/92410554",
+      "title": "Anthropic mathematician says Claude helped prove the Riemann hypothesis",
+      "summary": "Levent Alpöge released a Lean-only proof, crediting Claude with the final steps. MIT's Andrew Sutherland compiled it without errors, but full verification is pending and experts urge caution.",
+      "title_ko": "앤트로픽 수학자 \"클로드와 리만 가설 증명\" 주장",
+      "summary_ko": "레벤트 알푀게가 클로드가 마지막 단계를 도왔다며 린(Lean) 코드로만 된 증명을 공개했어요. MIT 연구자가 독립적으로 컴파일해 오류는 없었지만, 최종 검증은 아직 진행 중이라 전문가들은 신중한 태도예요.",
+      "source": "The Next Web",
+      "url": "https://thenextweb.com/news/anthropic-alpoge-claude-riemann-hypothesis-proof-lean",
       "published": "Nov 21",
-      "tag": "Industry"
+      "tag": "Research"
     },
     {
-      "title": "University of California signs systemwide ChatGPT deal",
-      "summary": "UC will pay OpenAI $1.2 million for a year of ChatGPT Edu and Codex for about 300,000 students and 265,000 employees starting Dec 1, despite faculty objections that they were consulted too late.",
-      "title_ko": "UC, 전 캠퍼스에 챗GPT 에듀 도입 계약",
-      "summary_ko": "캘리포니아대(UC)가 120만 달러에 OpenAI와 1년 계약을 맺고 12월 1일부터 학생 약 30만 명과 교직원 26만5천 명에게 챗GPT 에듀와 코덱스를 제공해요. 교수진은 의견 수렴이 너무 늦었다며 반발했어요.",
-      "source": "Sacramento Bee",
-      "url": "https://www.yahoo.com/news/politics/articles/uc-inks-1-2m-openai-220030172.html",
-      "published": "Nov 20",
-      "tag": "Education"
-    },
-    {
-      "title": "Korea to train teachers on AI with Microsoft, Google and AWS",
-      "summary": "The Education Ministry is running hands-on AI sessions for about 240 teachers at the three companies' Seoul offices from Nov 21 to Dec 5, covering coding assistants, Gemini and NotebookLM.",
-      "title_ko": "교육부, MS·구글·AWS와 교사 AI 실습 연수",
-      "summary_ko": "교육부가 11월 21일부터 12월 5일까지 세 기업의 서울 사무소에서 교사 약 240명을 대상으로 AI 실습 연수를 열어요. 코딩 도우미, 제미나이, 노트북LM 등을 직접 다뤄 보고 12월 11일에 우수 사례를 공유해요.",
-      "source": "뉴스핌",
-      "url": "https://www.newspim.com/news/view/20261120000127",
-      "published": "Nov 20",
+      "title": "Korea's education minister resigns over AI exam cheating",
+      "summary": "Choi Kyo-jin quit after AI-assisted cheating scandals around the Suneung college entrance exam, where officials logged 111 device-related violations. President Lee Jae Myung accepted the resignation.",
+      "title_ko": "최교진 교육부 장관, AI 부정행위 파문에 사퇴",
+      "summary_ko": "수능을 전후해 AI를 이용한 부정행위 논란이 커지자 최교진 장관이 물러났어요. 이번 수능에서 전자기기 관련 부정행위는 111건이 적발됐고, 이재명 대통령이 사표를 수리했어요.",
+      "source": "The Manila Times (AFP)",
+      "url": "https://manilatimes.net/2026/11/23/world/asia-oceania/skorea-education-chief-quits-amid-ai-cheating/2475682",
+      "published": "Nov 22",
       "tag": "Korea"
     },
     {
-      "title": "UN talks stop short of negotiating rules on killer robots",
-      "summary": "Countries at the Geneva weapons convention agreed only to keep developing a possible accord on autonomous weapons through 2028, after the US, Russia and Israel blocked a push for binding negotiations.",
-      "title_ko": "유엔 '킬러 로봇' 회의, 구속력 있는 협상 합의 불발",
-      "summary_ko": "제네바 특정재래식무기금지협약 회의에서 각국은 자율살상무기 협정안을 2028년까지 계속 다듬기로만 합의했어요. 미국·러시아·이스라엘이 구속력 있는 협상 개시에 반대했기 때문이에요.",
-      "source": "Al Jazeera",
-      "url": "https://aljazeera.com/news/2026/11/21/nations-agree-to-draft-rules-for-killer-robots-at-arms-control-summit",
+      "title": "Big school districts resist Google's AI-or-no-Search rule",
+      "summary": "Google says schools that block its AI will lose student access to Search. New York, Los Angeles and Chicago, which already restrict student AI use, are looking for ways around it.",
+      "title_ko": "대형 교육구들, 구글의 'AI 없으면 검색도 없다' 방침에 반발",
+      "summary_ko": "구글은 AI를 차단하는 학교는 학생용 검색도 쓸 수 없다고 밝혔어요. 이미 학생 AI 사용을 제한해 온 뉴욕·LA·시카고 교육구는 우회 방법을 찾고 있어요.",
+      "source": "Fortune",
+      "url": "https://fortune.com/2026/11/21/google-search-ai-overviews-schools-chicago-nyc-los-angeles-miami",
       "published": "Nov 21",
-      "tag": "Policy"
-    },
-    {
-      "title": "Austin ISD adopts its first AI policy",
-      "summary": "Texas' Austin district now limits students to approved AI tools used with teacher permission and requires them to credit AI help. Staff have 18 months to write detailed rules.",
-      "title_ko": "오스틴 교육구, 첫 AI 정책 채택",
-      "summary_ko": "텍사스 오스틴 교육구는 학생이 교사의 허락을 받아 승인된 AI 도구만 쓰고, AI 도움을 받으면 밝히도록 했어요. 세부 규정은 18개월 안에 마련할 예정이에요.",
-      "source": "The Austin Chronicle",
-      "url": "https://www.austinchronicle.com/news/aisd-writes-ai-policy-into-the-books/",
-      "published": "Nov 19",
       "tag": "Education"
     },
     {
-      "title": "Korean universities tighten security for essay exams after AI cheating",
-      "summary": "Following AI smart-glasses cheating cases last month, universities are adding checks for weekend admission essay tests, and the Education Ministry met admissions officers from 56 schools.",
-      "title_ko": "AI 부정행위 여파, 대학 논술고사 보안 강화",
-      "summary_ko": "지난달 AI 스마트안경 부정행위가 드러나자 대학들이 주말 논술고사 감독을 강화하고 있어요. 교육부도 56개 대학 입학 담당자들과 대응책을 논의했어요.",
-      "source": "The Korea Times",
-      "url": "https://koreatimes.co.kr/southkorea/education/20261120/universities-tighten-rules-to-curb-ai-cheating-on-weekend-essay-exams",
-      "published": "Nov 20",
+      "title": "Cheap AI inference hosts found leaking user secrets",
+      "summary": "An investigation of nearly 2 million traceable prompts found keys and private data being stolen or mishandled. OpenRouter dropped three providers and pulled zero-retention status from 125 endpoints.",
+      "title_ko": "저가 AI 추론 업체들, 사용자 비밀정보 유출 드러나",
+      "summary_ko": "추적 가능한 프롬프트 약 200만 건을 조사한 결과, API 키와 개인 데이터가 탈취되거나 부실하게 다뤄진 사실이 확인됐어요. 오픈라우터는 업체 세 곳을 퇴출하고 엔드포인트 125개의 무저장 인증을 취소했어요.",
+      "source": "Ars Technica",
+      "url": "https://arstechnica.com/security/2026/11/a-leaky-ai-supply-chain-is-exposing-secret-user-data-at-an-alarming-rate/",
+      "published": "Nov 22",
+      "tag": "Safety"
+    },
+    {
+      "title": "Google employees petition to let schools turn off AI Overviews",
+      "summary": "More than 550 Google workers asked the company to offer schools Search without AI answers, after parents and educators protested in six cities. Some districts are building their own blocking tools.",
+      "title_ko": "구글 직원들, 학교용 AI 개요 해제 요구 청원",
+      "summary_ko": "학부모와 교사들이 6개 도시에서 시위를 벌인 뒤, 구글 직원 550여 명이 학교에 AI 답변 없는 검색을 제공하라고 청원했어요. 일부 교육구는 자체 차단 도구를 만들고 있어요.",
+      "source": "NPR via WGCU",
+      "url": "https://wgcu.org/2026-11-21/google-employees-protest-ai-in-schools-policy",
+      "published": "Nov 21",
+      "tag": "Education"
+    },
+    {
+      "title": "ChatGPT passes 18 million users in Korea; Claude jumps to second",
+      "summary": "ChatGPT's Korean mobile app reached 18.76 million monthly users in October, up 44% from a year earlier. Claude climbed from seventh to second place with 2.1 million users.",
+      "title_ko": "챗GPT 국내 이용자 1800만 돌파, 클로드는 2위로",
+      "summary_ko": "챗GPT 모바일 앱의 10월 국내 월간 이용자가 1876만 명으로 1년 새 44% 늘었어요. 클로드는 이용자 210만 명으로 7위에서 2위로 올라섰어요.",
+      "source": "The Korea Herald",
+      "url": "https://www.koreaherald.com/article/10945220",
+      "published": "Nov 23",
       "tag": "Korea"
     }
   ]
